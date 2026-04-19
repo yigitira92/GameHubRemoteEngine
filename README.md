@@ -24,40 +24,67 @@ Uygulama; günlük operasyon akışında sık kullanılan sunuculara hızlı eri
 
 ## Öne çıkan özellikler
 
-### Sunucu yönetimi
+GameHub Remote Engine, Windows'un standart Uzak Masaüstü istemcisinde (mstsc) bulunmayan veya sınırlı biçimde sunulan çok sayıda operasyonel özelliği tek bir arayüzde toplar.
 
-Sınırsız sunucu kaydı ve çok sekmeli bağlantı yönetimi
-Favorilere ekleme ve hızlı arama
-Sunucu çoğaltma, düzenleme ve toplu işlem desteği
-Varsayılan RDP portu otomatik olarak uygulanır; standart dışı portlar için `sunucu:port` biçimi desteklenir
+### Çoklu oturum ve sekme yönetimi
 
-### Bağlantı ve oturum
+Birden fazla sunucuya aynı anda, tek pencere içinde sekmeli olarak bağlanma
+Sekmeler arasında klavye kısayollarıyla hızlı geçiş
+Her sekme için bağımsız oturum durumu, bant genişliği ve olay akışı
+Aktif sekmeyi ayrı bir pencerede ya da tam ekranda sürdürme
 
-Bağlantı kesildiğinde otomatik yeniden bağlanma
-Çalışan oturumların uygulama yeniden başladığında geri yüklenmesi için onaylı öneri
-Tam ekran ve pencere modları arasında sorunsuz geçiş
-Canlı bağlantı durumu ve bant genişliği göstergesi
+### Merkezi sunucu kütüphanesi
 
-### Güvenlik
+Sınırsız sunucu kaydı; her kayıt için görünen ad, etiket ve açıklama alanı
+Anlık arama ve favori filtreleme
+Sunucu çoğaltma ile benzer yapılandırmaları tek tıkla türetme
+Bağlam menüsünden ana bilgisayar adını veya sunucu adını panoya kopyalama
+Gerektiğinde sunucuyu Windows'un kendi RDP istemcisinde açma seçeneği
+Varsayılan 3389 portu otomatik uygulanır; standart dışı portlar için `sunucu:port` biçimi desteklenir
 
-Kimlik bilgileri yerel makinede şifrelenerek saklanır
-Yalnızca oturumu açan Windows hesabı tarafından çözülebilir
-Parolalar uygulama dışında düz metin olarak tutulmaz
-Telemetri, kullanım ya da analitik verisi toplanmaz
+### Gelişmiş kimlik bilgisi yönetimi
 
-### Arayüz ve kullanım
+Sunucu başına kullanıcı adı ve parola saklama; Windows Kimlik Bilgileri Yöneticisi'nden bağımsız
+Yeniden kullanılabilir kimlik bilgisi profilleri ile ortak hesapların tek noktadan yönetilmesi
+Parolalar yalnızca şifrelenmiş biçimde diske yazılır ve bellekte tutulan kasa sayesinde her bağlantıda yeniden sorulmaz
+Düzenleme iletişim kutusunda parola alanı güvenli biçimde önceden doldurulur; yanlışlıkla silme riski yoktur
+Operasyon ekibi için parolayı ekrana getirerek manuel paylaşmaya gerek kalmadan görme yardımcısı
 
-Açık ve koyu tema
-Türkçe ve İngilizce dil desteği
-Kurulum sırasında tema ve dil tercihi belirlenebilir
-Bildirim alanına (system tray) küçültme seçeneği
-Olay günlüğü görüntüleyicisi ve yapılandırılabilir klavye kısayolları
+### Akıllı bağlantı kurtarma
 
-### Bakım ve güncelleme
+Bağlantı kesildiğinde yapılandırılabilir aralıklarla otomatik yeniden bağlanma
+Uygulama kapatıldığında açık olan oturumların kaydedilmesi ve yeniden açılışta onayla geri yüklenmesi
+Sunucu erişilemez durumdayken kullanıcıya net geri bildirim
+Oturum durumu sürekli izlenir; gerçek zamanlı bağlantı ve veri akışı göstergesi sunulur
 
-Her açılışta otomatik sürüm kontrolü
-Yeni sürüm bulunduğunda kullanıcı onayı ile indirilip kurulur
-Güncelleme dağıtımı resmi GitHub Releases üzerinden yapılır
+### Profil ve yapılandırma esnekliği
+
+Global varsayılan ayarlar, profil katmanı ve sunucu bazında üzerine yazma zinciri
+Ekran çözünürlüğü, renk derinliği, ses ve aygıt yönlendirme ayarları merkezi olarak belirlenebilir
+Tek bir sunucu için yapılan değişiklik diğer kayıtları etkilemez
+
+### Modern arayüz ve erişilebilirlik
+
+Koyu ve açık tema; kurulum sırasında ilk tercih belirlenebilir ve uygulama içinde istenildiği zaman değiştirilebilir
+Türkçe ve İngilizce dil desteği; arayüzün tamamı yerelleştirilmiştir
+Bildirim alanına (system tray) küçültme ve pencereyi kapatma davranışının yapılandırılması
+Entegre olay günlüğü görüntüleyicisi; bağlantı, hata ve güncelleme olayları kronolojik olarak görüntülenir
+Kullanıcı tanımlı klavye kısayolları (önceki / sonraki sekme ve diğer eylemler)
+Yüksek DPI ve çoklu monitör desteği
+
+### Güvenlik ve gizlilik
+
+Kimlik bilgileri yalnızca oturumu açan Windows hesabı tarafından çözülebilecek biçimde yerel olarak şifrelenir
+Parolalar, uygulama ve bellek dışında düz metin olarak hiçbir yere yazılmaz
+Uygulama herhangi bir telemetri, kullanım veya analitik verisi toplamaz
+Harici bir hesap, bulut servisi veya lisans sunucusu ile iletişim kurulmaz
+
+### Bakım ve otomatik güncelleme
+
+Her açılışta sessiz sürüm kontrolü
+Yeni sürüm bulunduğunda kullanıcıya modern bir iletişim kutusu ile bildirim
+Onay üzerine güncelleme paketinin arka planda indirilmesi ve kurulumu
+Kişisel ayarlar, kayıtlı sunucular ve kimlik bilgileri güncellemelerden etkilenmez
 
 ---
 
