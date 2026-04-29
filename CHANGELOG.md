@@ -5,6 +5,16 @@ Format [Keep a Changelog](https://keepachangelog.com/tr/1.1.0/) prensiplerini ta
 
 ---
 
+## [1.0.5] — 2026-04-25
+
+### Düzeltilenler
+
+- **Sonsuz "Güncelleme var" diyaloğu hatası giderildi.** Önceki sürümlerde, .NET SDK'sının `InformationalVersion`'a otomatik eklediği SourceLink commit-hash suffix'i (örn. `1.0.4+7e80fa1b...`) version karşılaştırmasını bozuyordu. `IsNewer` fonksiyonu `"4+7e80fa1..."` int parse'ı başarısız olduğunda current versiyonu `1.0.0` olarak okuyor → her zaman "yeni sürüm var" diyalogunu gösteriyordu. Bu sürümle birlikte: (1) suffix runtime'da kırpılır, (2) compile-time'da hiç eklenmez (`IncludeSourceRevisionInInformationalVersion=false`), (3) `IsNewer` Parse fonksiyonu da defansif olarak suffix'i temizler.
+
+[1.0.5]: https://github.com/yigitira92/GameHubRemoteEngine/releases/tag/v1.0.5
+
+---
+
 ## [1.0.4] — 2026-04-25
 
 ### Düzeltilenler

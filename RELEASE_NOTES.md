@@ -1,4 +1,4 @@
-# GameHub Remote Engine — v1.0.4
+# GameHub Remote Engine — v1.0.5
 
 **Yayın tarihi:** 25 Nisan 2026
 **Kanal:** Stable
@@ -8,40 +8,30 @@
 
 ---
 
-## Düzeltme: Otomatik güncelleme "başarılı görünüp aslında olmuyordu"
+## Düzeltme: Sonsuz "Güncelleme var" diyaloğu
 
-Önceki sürümlerde (v1.0.0 / v1.0.1 / v1.0.2 / v1.0.3) otomatik güncelleme akışında bir yarış koşulu (race condition) vardı:
+v1.0.4'te ve önceki bazı sürümlerde, app açıldığında "Yeni sürüm var" diyaloğu **kendi sürümüne kendi sürümünü öneriyordu**:
 
-1. App, installer'ı `/VERYSILENT` modunda çalıştırırdı
-2. App eş zamanlı olarak `Application.Shutdown()` çağırırdı
-3. Installer, app henüz tam kapanmadan dosyayı kopyalamaya çalışırdı
-4. **Dosya kilidi açık olmadığı için kopyalama başarısız olurdu**
-5. `/SUPPRESSMSGBOXES` hatayı bastırırdı
-6. Setup "Successful" döndürürdü → kullanıcıya "başarılı" mesajı gösterilirdi
-7. App eski versiyonla yeniden açılırdı
+```
+Current version: 1.0.4+7e80fa1b92240c93f
+New version:     1.0.4
+```
 
-Sonuç: kullanıcı güncellediğini düşünürdü ama dosyalar gerçekten değişmemişti.
+**Neden:** .NET SDK'sı, build sırasında `InformationalVersion`'a otomatik olarak `+commit-hash` ekler (SourceLink özelliği). UpdateService'in version comparison fonksiyonu bu suffix'i tanımıyor, `int.Parse("4+7e80fa1...")` başarısız oluyor ve current sürümü `1.0.0` olarak okuyordu. Sonuç: latest tag `1.0.4` her zaman "newer" görünüyor → diyalog her açılışta beliriyor.
 
-### v1.0.4 ile
+### v1.0.5 ile
 
-Installer artık **kendisi self-healing**:
+- **Runtime fix:** `CurrentVersion` getter'ı suffix'i artık kırpıyor (`1.0.4+abc123` → `1.0.4`).
+- **Defensive fix:** `IsNewer` Parse fonksiyonu da suffix temizliyor — her iki tarafta da güvenli.
+- **Compile-time fix:** csproj'a `IncludeSourceRevisionInInformationalVersion=false` eklendi → suffix hiç oluşmuyor.
 
-- Kurulum başlamadan önce çalışan tüm `GameHubRemoteEngine.exe` instance'larını **zorla kapatır** (`taskkill /F`)
-- **Dosya kilidi serbest kalana kadar bekler** (3 saniyeye kadar polling)
-- Sonra dosya kopyalamaya başlar — race condition imkânsız
-- Hala kilit kalırsa Inno'nun `restartreplace` bayrağı dosyayı **bir sonraki reboot'ta** otomatik değiştirir (Windows kuyruğu)
-
-### Eski sürümlerden gelen güncellemeler
-
-| Şu anda yüklü | → v1.0.4 davranışı |
-|---------------|---------------------|
-| v1.0.0 / v1.0.1 / v1.0.2 / v1.0.3 | ✅ **Bu sürüm gerçekten yüklenir** (eski race condition fix'lendi) |
-| v1.0.4 → sonraki sürümler | ✅ Tamamen sessiz, helper-batch ile (v1.0.3'te eklenen) |
+Üç kat koruma. Bundan sonra **kendi sürümünü kendine update teklif etmez**.
 
 ---
 
 ## Önceki sürümler
 
+- [v1.0.4](https://github.com/yigitira92/GameHubRemoteEngine/releases/tag/v1.0.4) — Otomatik güncelleme race-condition hotfix
 - [v1.0.3](https://github.com/yigitira92/GameHubRemoteEngine/releases/tag/v1.0.3) — Inno installer'sız sessiz güncelleme akışı
 - [v1.0.2](https://github.com/yigitira92/GameHubRemoteEngine/releases/tag/v1.0.2) — Inno /VERYSILENT bayrağı
 - [v1.0.1](https://github.com/yigitira92/GameHubRemoteEngine/releases/tag/v1.0.1) — Otomatik başlatma
@@ -51,7 +41,7 @@ Installer artık **kendisi self-healing**:
 
 ## Kurulum
 
-**Mevcut kullanıcılar:** Uygulamanın bir sonraki açılışında otomatik güncelleme bildirimi görünür. Bu sefer **gerçekten yüklenecek**.
+**Mevcut kullanıcılar:** Uygulamanın bir sonraki açılışında otomatik güncelleme bildirimi görünür. v1.0.4'ten v1.0.5'e geçtikten sonra spurious "update available" diyaloğu artık görünmez.
 
 **Yeni kurulum:** Yukarıdaki indirme bağlantısından `GameHubRemoteEngine-Setup.exe` dosyasını çalıştırın.
 
