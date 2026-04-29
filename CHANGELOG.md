@@ -5,6 +5,24 @@ Format [Keep a Changelog](https://keepachangelog.com/tr/1.1.0/) prensiplerini ta
 
 ---
 
+## [1.0.1] — 2026-04-25
+
+### Eklenenler
+
+- **Bilgisayar açılışında otomatik başlatma + son oturumlara bağlanma**
+  Seçenekler → Bağlantı Ayarları altında yeni bir kutucuk. Etkinleştirildiğinde Windows oturum açıldığında uygulama otomatik açılır ve önceki oturumda bağlı olduğunuz sunuculara onay sormadan tekrar bağlanır. Varsayılan olarak kapalı.
+
+- **Bağlantı Ayarları sekmesi**
+  Seçenekler ekranında bağlantı davranışıyla ilgili tüm seçenekler (yeniden bağlanma, NLA, tepsi, otomatik başlatma) ayrı bir sekmeye toplandı. Genel sekmesi artık yalnızca dil + tema + UI tercihlerini içerir.
+
+### Değişenler
+
+- Yeni sürümler artık otomatik güncelleme ile dağıtılır; v1.0.0 kullanıcıları açılışta güncelleme bildirimi görür.
+
+[1.0.1]: https://github.com/yigitira92/GameHubRemoteEngine/releases/tag/v1.0.1
+
+---
+
 ## [1.0.0] — 2026-04-25
 
 İlk genel sürüm.
