@@ -5,6 +5,17 @@ Format [Keep a Changelog](https://keepachangelog.com/tr/1.1.0/) prensiplerini ta
 
 ---
 
+## [1.0.4] — 2026-04-25
+
+### Düzeltilenler
+
+- **Otomatik güncellemenin "başarılı görünüp aslında olmaması" hatası giderildi.** Eski sürümlerin (v1.0.0 / v1.0.1 / v1.0.2 / v1.0.3) installer'ı sessiz modda çağırırken yarış koşulu yaşanıyordu: setup, çalışan EXE'nin dosya kilidi henüz açılmadan kopyalamayı deniyor → kopyalama başarısız oluyor → `/SUPPRESSMSGBOXES` hatayı bastırıyor → setup "başarılı" raporluyordu ama dosya değişmemişti.
+  Bu sürümün installer'ı, kurulum başlamadan önce çalışan tüm `GameHubRemoteEngine.exe` instance'larını zorla kapatır, dosya kilidi serbest kalana kadar bekler, sonra kopyalamaya başlar. Ayrıca Inno Setup'ın `restartreplace` bayrağı, hala kilitli kalan dosyaları sonraki reboot'ta otomatik değiştirmek üzere kuyruğa alır.
+
+[1.0.4]: https://github.com/yigitira92/GameHubRemoteEngine/releases/tag/v1.0.4
+
+---
+
 ## [1.0.3] — 2026-04-25
 
 ### Değişenler
