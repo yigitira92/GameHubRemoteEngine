@@ -5,6 +5,16 @@ Format [Keep a Changelog](https://keepachangelog.com/tr/1.1.0/) prensiplerini ta
 
 ---
 
+## [1.0.2] — 2026-04-25
+
+### Değişenler
+
+- **Otomatik güncelleme artık tamamen sessiz.** Yeni sürüm yüklenirken Inno Setup wizard'ı (Welcome / Directory / Ready / Finished sayfaları) artık gösterilmiyor. Kullanıcı sadece app'in kapanıp birkaç saniye sonra yeni sürüm olarak tekrar açıldığını görür — Discord, 1Password, Slack tarzı silent update deneyimi.
+
+[1.0.2]: https://github.com/yigitira92/GameHubRemoteEngine/releases/tag/v1.0.2
+
+---
+
 ## [1.0.1] — 2026-04-25
 
 ### Eklenenler
