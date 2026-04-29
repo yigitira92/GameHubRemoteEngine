@@ -1,0 +1,109 @@
+# =============================================================================
+# GameHub Remote Engine — release-only repository
+# =============================================================================
+#
+# This repo serves as the public release distribution channel for GameHub
+# Remote Engine. The product source code is NOT distributed here.
+#
+# Only these files belong in version control:
+#   - README.md
+#   - CHANGELOG.md
+#   - RELEASE_NOTES.md
+#   - .gitignore  (this file)
+#
+# Everything below is explicitly ignored so accidental `git add .` from a
+# developer machine cannot leak source code, build scripts, or internal
+# tooling. The local working directory keeps the full source tree for
+# building releases — those files just never get tracked.
+# =============================================================================
+
+# Source code — NEVER tracked.
+src/
+docs/
+.claude/
+
+# Solution / project / build files
+*.sln
+*.csproj
+*.props
+*.targets
+*.config
+Directory.Build.*
+global.json
+
+# Build / publish outputs
+bin/
+obj/
+publish/
+[Dd]ebug/
+[Rr]elease/
+[Dd]ebugPublic/
+x64/
+x86/
+artifacts/
+*.dll
+*.exe
+*.pdb
+*.cache
+*.tmp_proj
+*.binlog
+*.log
+*.tlog
+*.iobj
+*.ipdb
+
+# Release tooling and installer config (kept local, not pushed).
+build-release.ps1
+installer.iss
+Releases/
+DEPLOY.md
+CLAUDE.md
+
+# IDE / editor folders
+.vs/
+.vscode/
+.idea/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+_ReSharper*/
+*.[Rr]e[Ss]harper
+*.DotSettings.user
+
+# NuGet
+*.nupkg
+*.snupkg
+**/[Pp]ackages/*
+!**/[Pp]ackages/build/
+*.nuget.props
+*.nuget.targets
+
+# Test results
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+*.VisualState.xml
+TestResult.xml
+nunit-*.xml
+coverage*.json
+coverage*.xml
+coverage*.info
+
+# WPF baml/g.cs intermediates
+*.g.cs
+*.g.i.cs
+*.baml
+
+# OS junk
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+.DS_Store
+
+# Local environment / secrets
+.env
+.env.local
+*.local.json
+appsettings.Development.json
+appsettings.Local.json
