@@ -5,6 +5,16 @@ Format [Keep a Changelog](https://keepachangelog.com/tr/1.1.0/) prensiplerini ta
 
 ---
 
+## [1.0.3] — 2026-04-25
+
+### Değişenler
+
+- **Otomatik güncelleme artık tamamen Inno installer'sız çalışıyor.** Yeni sürüm yüklenirken installer wizard'ı, progress bar'ı veya wizard pages **hiç çalışmaz**. Bunun yerine: yeni `GameHubRemoteEngine.exe` indirilir → küçük bir helper script eski EXE'yi yenisiyle değiştirir → uygulama otomatik yeniden açılır. Kullanıcı yalnızca tek bir UAC izin penceresi görür (Program Files'a yazmak için zorunlu) ve ardından app temiz şekilde yeni sürümle yeniden açılır.
+
+[1.0.3]: https://github.com/yigitira92/GameHubRemoteEngine/releases/tag/v1.0.3
+
+---
+
 ## [1.0.2] — 2026-04-25
 
 ### Değişenler

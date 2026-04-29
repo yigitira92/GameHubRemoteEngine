@@ -1,4 +1,4 @@
-# GameHub Remote Engine — v1.0.2
+# GameHub Remote Engine — v1.0.3
 
 **Yayın tarihi:** 25 Nisan 2026
 **Kanal:** Stable
@@ -9,30 +9,40 @@
 
 ---
 
-## Otomatik güncelleme artık sessiz
+## Otomatik güncelleme artık installer'sız
 
-Önceki sürümlerde otomatik güncelleme tetiklendiğinde Inno Setup wizard'ı 4–5 sayfalık bir akışla açılıyordu (Welcome / Directory / Ready / Installing / Finished). Aslında dosyalar yerinde değiştiriliyordu (fresh install değil, kullanıcı verisi korunuyordu) ama UI gürültüsü yüzünden "baştan kuruluyor" hissi veriyordu.
+Önceki sürümlerde otomatik güncelleme akışı Inno Setup installer'ını çalıştırıyordu — `/VERYSILENT` bayrağıyla bile installer'ın kısa bir progress UI'sı görünebiliyordu. Bu sürümle birlikte tamamen yeni bir akış devreye girdi:
 
-**Bu sürümle birlikte:**
-- Wizard sayfaları **hiç açılmaz**.
-- Uygulama otomatik kapanır → dosyalar yenilenir → uygulama yeni sürümde otomatik yeniden açılır.
-- Discord, 1Password, Slack gibi profesyonel masaüstü uygulamalarındaki silent-update deneyimi.
-- Kullanıcı sadece "kapandı, 2-3 saniye sonra yeni sürüm açıldı" gözlemler.
+**Yeni akış:**
+1. Uygulama açılışta GitHub'da yeni sürümü tespit eder, kullanıcıya sorar.
+2. Kullanıcı onaylarsa **tek başına `GameHubRemoteEngine.exe` portable dosyası** indirilir (installer değil).
+3. Küçük bir helper script eski EXE'yi yenisiyle yerinde değiştirir.
+4. Uygulama otomatik olarak yeni sürümle yeniden açılır.
 
-**Önceki davranışın korunduğu durum:** Setup'ı manuel olarak çift tıklayıp çalıştırırsan klasik Inno Setup wizard'ı açılır — manuel kurulumda kullanıcı her adımı görmek isteyebilir, bu yüzden sadece otomatik güncelleme akışı sessize alındı.
+**Kullanıcı deneyimi:**
+- ❌ Installer wizard yok
+- ❌ Progress bar yok
+- ❌ "Welcome / Directory / Ready" sayfaları yok
+- ✅ Tek bir UAC izin penceresi (Program Files'a yazmak için zorunlu)
+- ✅ Uygulama kapanır → ~3 saniye sonra yeni sürümle açılır
+
+Discord, 1Password, Slack gibi profesyonel masaüstü uygulamalarındaki silent-update deneyimi.
+
+**Manuel kurulum:** Setup.exe dosyasını hâlâ ayrıca paylaşıyoruz; ilk kurulum için klasik wizard'ı kullanır. Yalnızca otomatik güncelleme akışı sessize alındı.
 
 ---
 
 ## Önceki sürümler
 
-- [v1.0.1](https://github.com/yigitira92/GameHubRemoteEngine/releases/tag/v1.0.1) — Bilgisayar açıldığında otomatik başlatma + Bağlantı Ayarları sekmesi
+- [v1.0.2](https://github.com/yigitira92/GameHubRemoteEngine/releases/tag/v1.0.2) — Inno /VERYSILENT bayrağı
+- [v1.0.1](https://github.com/yigitira92/GameHubRemoteEngine/releases/tag/v1.0.1) — Bilgisayar açıldığında otomatik başlatma
 - [v1.0.0](https://github.com/yigitira92/GameHubRemoteEngine/releases/tag/v1.0.0) — İlk genel sürüm
 
 ---
 
 ## Kurulum
 
-**Mevcut kullanıcılar:** Uygulamanın bir sonraki açılışında otomatik güncelleme bildirimi görünür. Bu sürüme yükseltirken yine wizard pages görürsünüz (eski sürümün update servisi bu silent flag'i bilmiyordu) — ama **bu sürümden sonraki tüm güncellemeler sessiz olacak**.
+**Mevcut kullanıcılar:** Uygulamanın bir sonraki açılışında otomatik güncelleme bildirimi görünür. v1.0.0/v1.0.1 → v1.0.3 geçişi eski installer akışıyla yapılır (eski sürümün update servisi yeni mantığı bilmiyor). Bu sürümden sonraki **her güncelleme installer'sız** olacak.
 
 **Yeni kurulum:** Yukarıdaki indirme bağlantısından `GameHubRemoteEngine-Setup.exe` dosyasını çalıştırın.
 
