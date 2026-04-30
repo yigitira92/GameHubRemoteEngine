@@ -6,8 +6,8 @@
 
 ### Oyuncular için Windows Uzak Masaüstü İstemcisi
 
-Knight Online, MMO ve oyun sunucularınızı tek bir modern arayüzden güvenle yönetin.
-Birden fazla VDS'iniz mi var? Hepsini aynı pencerede tutun, tek tıkla bağlanın, oturumları yan yana izleyin.
+Çoklu Windows VDS / dedicated sunucularınızı tek bir modern arayüzden güvenle yönetin.
+Tüm sunucularınızı aynı pencerede tutun, tek tıkla bağlanın ve oturumları yan yana izleyin.
 
 [![Sürüm](https://img.shields.io/github/v/release/yigitira92/GameHubRemoteEngine?label=s%C3%BCr%C3%BCm&color=2563eb&style=for-the-badge)](https://github.com/yigitira92/GameHubRemoteEngine/releases/latest)
 [![Platform](https://img.shields.io/badge/platform-Windows%2010%20%2F%2011%20x64-0078d4?style=for-the-badge)](https://github.com/yigitira92/GameHubRemoteEngine/releases/latest)
